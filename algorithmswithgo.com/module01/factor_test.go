@@ -13,6 +13,7 @@ func TestFactor(t *testing.T) {
 		number int
 		want   []int
 	}{
+		// {[]int{2, 3, 5}, 28, []int{2, 2, 7}},
 		{tenPrimes, 30, []int{2, 3, 5}},
 		{tenPrimes, 28, []int{2, 2, 7}},
 		{tenPrimes, 720, []int{2, 2, 2, 2, 3, 3, 5}},
