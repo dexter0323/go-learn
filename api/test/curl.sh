@@ -24,5 +24,10 @@
     # UPDATE
     curl -d '{"name":"Jhon Updated", "description":"test event updated", "location": "location", "datetime": "2024-05-05T05:05:05.000Z"}' -H "Content-Type: application/json" -X PUT http://localhost:8080/events/1
 
+    curl -d '{"name":"Jhon", "description":"test event", "location": "test location", "datetime": "2024-05-05T05:05:05.000Z"}' \
+    -H "Content-Type: application/json" \
+    -H "Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Impob25AZXhhbXBsZS5jb20iLCJleHAiOjE3MTc0NjA0ODgsInVzZXJJZCI6MX0.evUCblKiDrYH7IPoogC9fQq915YfxpTeMX7Q7WE_Lg0" \
+    -X PUT http://localhost:8080/events/2
+
     # DELETE
     curl -X DELETE http://localhost:8080/events/1
