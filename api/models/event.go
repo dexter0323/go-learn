@@ -19,7 +19,7 @@ var events = []Event{}
 
 func (e Event) Save() error {
 	// TODO: insert into DB
-	query, err := db.DB.Prepare(`INSERT INTO events(name, description, location, datetime, userId) VALUES (?, ?, ?, ?, ?)`)
+	query, err := db.DB.Prepare(`INSERT INTO events(name, description, location, datetime, user_id) VALUES (?, ?, ?, ?, ?)`)
 	if err != nil {
 		return err
 	}
@@ -70,4 +70,26 @@ func GetEvent(id int64) (*Event, error) {
 	}
 
 	return &event, nil
+}
+
+func (e Event) Update() error {
+	_, err := db.DB.Exec(`
+	UPDATE events 
+	SET name = ?, description = ?, location = ?, dateTime = ?
+	WHERE id = ?
+	`, e.Name, e.Description, e.Location, e.DateTime, e.ID)
+	if err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (e Event) Delete() error {
+	_, err := db.DB.Exec(`DELETE FROM events WHERE id = ?`, e.ID)
+	if err != nil {
+		return err
+	}
+
+	return nil
 }
