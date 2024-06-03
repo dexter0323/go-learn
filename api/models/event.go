@@ -18,7 +18,7 @@ type Event struct {
 var events = []Event{}
 
 func (e Event) Save() error {
-	// TODO: insert into DB
+
 	query, err := db.DB.Prepare(`INSERT INTO events(name, description, location, datetime, user_id) VALUES (?, ?, ?, ?, ?)`)
 	if err != nil {
 		return err
